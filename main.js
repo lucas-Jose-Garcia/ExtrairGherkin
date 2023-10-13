@@ -48,3 +48,33 @@ function gerarDeclaracoes() {
                 informativo.innerHTML = ''
         }, 2500)
 }
+
+function removerFormatacao() {
+        const textArea = document.getElementById("info")
+        const informativo = document.getElementById("informativo")
+        const duplicarChaves = document.getElementById('DuplicarChaves').checked;
+        const usarEscape = document.getElementById('UsarEscape').checked;
+        
+        const texto = textArea.value
+        let result = texto.replace(/\r?\n|\r/g, "") //remove as quebras de linhas
+        result = result.replace(/>[\s]*</g, "><") //remove os espaços extras entre as tags
+
+        if (duplicarChaves) {
+                result = result.replaceAll("{", "{{")  
+                result = result.replaceAll("}", "}}")  
+        }
+
+        if (usarEscape) {
+                result = result.replaceAll('"', '\\"')
+        }
+
+        textArea.value = result  
+        navigator.clipboard.writeText(result)
+        informativo.classList.add('visivel')
+        informativo.innerHTML = `Remoção da formação efetuada com sucesso`
+        
+        setTimeout(function() {
+                informativo.classList.remove('visivel')
+                informativo.innerHTML = ''
+        }, 2500)    
+}
