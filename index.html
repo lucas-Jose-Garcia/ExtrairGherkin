@@ -9,21 +9,28 @@
 </head>
 <body>
         <div class="box">
-                <textarea id="info" rows="50" cols="100"></textarea>
                 <div class="box_button">
                         <p id="informativo"></p>
-                        <div class="ck">
-                                <input type="checkbox" id="DuplicarChaves">
-                                <label for="DuplicarChaves">Duplicar Chaves</label>
-                        </div> 
-                        <div class="ck">
-                                <input type="checkbox" id="UsarEscape">
-                                <label for="UsarEscape">Usar sequências de escape</label>
-                        </div> 
-                        <button onclick="removerFormatacao()">Remover Formatação</button>
                         <button onclick="extrair()">Extrair Gherkin</button>
                         <button onclick="gerarDeclaracoes()">Gerar Declarações</button>
+                        <button onclick="removerFormatacao()">Remover Formatação</button>
+
+                        <div class="cks">
+                                <div class="ck">
+                                        <input type="checkbox" id="DuplicarChaves">
+                                        <label for="DuplicarChaves">Duplicar Chaves</label>
+                                </div> 
+                                <div class="ck">
+                                        <input type="checkbox" id="UsarEscape">
+                                        <label for="UsarEscape">Usar sequências de escape</label>
+                                </div> 
+                                <div class="ck">
+                                        <input type="checkbox" id="RemoverQuebras">
+                                        <label for="RemoverQuebras">Remover Quebras de Linha</label>
+                                </div> 
+                        </div>
                 </div>
+                <textarea id="info" rows="50" cols="100"></textarea>
         </div>
         <script src="./main.js"></script>
 </body>

@@ -54,10 +54,14 @@ function removerFormatacao() {
         const informativo = document.getElementById("informativo")
         const duplicarChaves = document.getElementById('DuplicarChaves').checked;
         const usarEscape = document.getElementById('UsarEscape').checked;
+        const removerQuebras = document.getElementById('RemoverQuebras').checked;
         
-        const texto = textArea.value
-        let result = texto.replace(/\r?\n|\r/g, "") //remove as quebras de linhas
-        result = result.replace(/>[\s]*</g, "><") //remove os espaços extras entre as tags
+        let result = textArea.value
+        
+        if (removerQuebras) {
+                result = result.replace(/\r?\n|\r/g, "") //remove as quebras de linhas
+                result = result.replace(/>[\s]*</g, "><") //remove os espaços extras entre as tags
+        }
 
         if (duplicarChaves) {
                 result = result.replaceAll("{", "{{")  

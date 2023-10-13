@@ -55,12 +55,15 @@ body {
         color: #dadada;
 }
 
+.box {
+        display: flex;
+}      
+
 .box button {
         margin: 18px;
         padding: 8px;
 }
 
-.ck {
-        margin-left: 8px;
-        margin-right: 8px;
+.cks {
+        margin-bottom: 12px;
 }
