@@ -55,9 +55,14 @@ function removerFormatacao() {
         const duplicarChaves = document.getElementById('DuplicarChaves').checked;
         const usarEscape = document.getElementById('UsarEscape').checked;
         const removerQuebras = document.getElementById('RemoverQuebras').checked;
+        const CriarLista = document.getElementById('CriarLista').checked;
         
         let result = textArea.value
-        
+
+        if (usarEscape) {
+                result = result.replaceAll('"', '\\"')
+        }
+
         if (removerQuebras) {
                 result = result.replace(/\r?\n|\r/g, "") //remove as quebras de linhas
                 result = result.replace(/>[\s]*</g, "><") //remove os espaços extras entre as tags
@@ -68,9 +73,13 @@ function removerFormatacao() {
                 result = result.replaceAll("}", "}}")  
         }
 
-        if (usarEscape) {
-                result = result.replaceAll('"', '\\"')
-        }
+        if (CriarLista) {
+                let tratamento = result.split("\n")
+                result = ""
+                tratamento.forEach(line => {
+                  result += `\"${line.trim()}\",\n`
+                });  
+          }
 
         textArea.value = result  
         navigator.clipboard.writeText(result)
